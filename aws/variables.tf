@@ -3,6 +3,7 @@
 variable "region" {}
 variable "vpc_cidr" {}
 variable "vpc_name" {}
+variable "vpc_id" {}
 variable "ssh_key_name" {}
 variable "ssh_private_key_location" {}
 variable "ssh_public_key_location" {}

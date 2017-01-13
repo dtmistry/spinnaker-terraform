@@ -2,9 +2,10 @@
 #
 #	Variables to be updated by each user
 #
-region = "us-west-2"
-vpc_cidr = "192.168.0.0/16"
-vpc_name = "vpc_DIFFNAME"
+region = "us-east-1"
+vpc_id = "vpc-029ce566"
+vpc_cidr = "172.28.0.0/16"
+vpc_name = "Cars.com-Pilot-East"
 ssh_key_name = "my-aws-account-keypair"
 
 ssh_private_key_location = "~/.ssh/id_rsa_spinnaker_terraform"

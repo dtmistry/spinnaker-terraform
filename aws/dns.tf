@@ -6,7 +6,7 @@ resource "aws_route53_zone" "internal" {
 		purpose = "Spinnaker"
 	}
 
-	vpc_id = "${aws_vpc.main.id}"
+	vpc_id = "${var.vpc_id}"
 	vpc_region = "${var.region}"
 }
 

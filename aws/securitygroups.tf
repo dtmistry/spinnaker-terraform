@@ -1,7 +1,7 @@
 
 /* ADM_BASTION */
 resource "aws_security_group" "adm_bastion" {
-  vpc_id = "${aws_vpc.main.id}"
+  vpc_id = "${var.vpc_id}"
   name="ADM_BASTION"
   description="Bastion Host SG"
   tags {
@@ -16,7 +16,7 @@ resource "aws_security_group" "adm_bastion" {
 
 /* security group for eelb  */
 resource "aws_security_group" "eelb" {
-  vpc_id = "${aws_vpc.main.id}"
+  vpc_id = "${var.vpc_id}"
   name="EELB"
   description="security group for eelb"
   tags {
@@ -49,7 +49,7 @@ resource "aws_security_group" "eelb" {
 
 /* security group for ielb  */
 resource "aws_security_group" "ielb" {
-  vpc_id = "${aws_vpc.main.id}"
+  vpc_id = "${var.vpc_id}"
   name="IELB"
   description="security group for ielb"
   tags {
@@ -82,11 +82,11 @@ resource "aws_security_group" "ielb" {
 
 /* VPC sg */
 resource "aws_security_group" "vpc_sg" {
-  vpc_id = "${aws_vpc.main.id}"
-  name="VPC_${element(split ("-", "${aws_vpc.main.id}"), 1)}"
-  description="VPC Default Security group for ${aws_vpc.main.id}"
+  vpc_id = "${var.vpc_id}"
+  name="VPC_${element(split ("-", "${var.vpc_id}"), 1)}"
+  description="VPC Default Security group for ${var.vpc_id}"
   tags {
-    Name="VPC_${element(split ("-", "${aws_vpc.main.id}"), 1)}"
+    Name="VPC_${element(split ("-", "${var.vpc_id}"), 1)}"
     created_by="${var.created_by}"
     application="none"
     allocated="false"
@@ -284,11 +284,11 @@ resource "aws_security_group" "vpc_sg" {
 
 /* MGMT SG */
 resource "aws_security_group" "mgmt_sg" {
-  vpc_id = "${aws_vpc.main.id}"
-  name="MGMT_${element(split ("-", "${aws_vpc.main.id}"), 1)}"
-  description="MGMT Security group for ${aws_vpc.main.id}"
+  vpc_id = "${var.vpc_id}"
+  name="MGMT_${element(split ("-", "${var.vpc_id}"), 1)}"
+  description="MGMT Security group for ${var.vpc_id}"
   tags {
-    Name="MGMT_${element(split ("-", "${aws_vpc.main.id}"), 1)}"
+    Name="MGMT_${element(split ("-", "${var.vpc_id}"), 1)}"
     created_by="${var.created_by}"
     application="none"
     allocated="false"
@@ -306,9 +306,9 @@ resource "aws_security_group" "mgmt_sg" {
 
 /* Spinnaker SG */
 resource "aws_security_group" "infra_spinnaker" {
-  vpc_id = "${aws_vpc.main.id}"
+  vpc_id = "${var.vpc_id}"
   name="INFRA_SPINNAKER"
-  description="Spinnaker Security group for ${aws_vpc.main.id}"
+  description="Spinnaker Security group for ${var.vpc_id}"
   tags {
     Name="INFRA_SPINNAKER"
     created_by="${var.created_by}"
@@ -321,9 +321,9 @@ resource "aws_security_group" "infra_spinnaker" {
 
 /* Jenkins SG */
 resource "aws_security_group" "infra_jenkins" {
-  vpc_id = "${aws_vpc.main.id}"
+  vpc_id = "${var.vpc_id}"
   name="INFRA_JENKINS"
-  description="Jenkins Security group for ${aws_vpc.main.id}"
+  description="Jenkins Security group for ${var.vpc_id}"
   tags {
     Name="INFRA_JENKINS"
     created_by="${var.created_by}"
@@ -349,9 +349,9 @@ resource "aws_security_group" "infra_jenkins" {
 
 /* SG for example application */
 resource "aws_security_group" "example_app" {
-  vpc_id = "${aws_vpc.main.id}"
+  vpc_id = "${var.vpc_id}"
   name="EXAMPLE_SG"
-  description="Spinnaker Security group for ${aws_vpc.main.id}"
+  description="Spinnaker Security group for ${var.vpc_id}"
   tags {
     Name="EXAMPLE_SG"
     created_by="${var.created_by}"

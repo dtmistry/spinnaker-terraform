@@ -15,7 +15,7 @@ data "template_file" "output" {
 		mgmt_sg_id = "${aws_security_group.mgmt_sg.id}"
 		vpc_name = "${var.vpc_name}"
 		aws_region = "${var.region}"
-		vpc_id = "${aws_vpc.main.id}"
+		vpc_id = "${var.vpc_id}"
 		instance_iam_role = "${var.base_iam_role_name}"
 		kenzan_statepath = "${var.kenzan_statepath}"
 	}
